@@ -1,0 +1,368 @@
+/* Reset เบื้องต้น */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: "Sarabun", "Noto Sans Thai", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  background: #fff;
+  color: #222;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container กำหนด max-width และ margin กลาง */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* header */
+.site-header {
+  background: #222;
+  color: #fff;
+  padding: 1.5rem 0;
+  position: relative;
+  user-select: none;
+}
+
+.header-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-weight: 900;
+  font-size: 1.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.muted {
+  color: #888;
+  font-weight: 400;
+  font-size: 1rem;
+  margin-left: 0.3rem;
+}
+
+/* people-switch (tab) */
+.people-switch {
+  
+  display: flex;
+  gap: 1rem;
+  background: #333;
+  border-radius: 1.5rem;
+  padding: 0.3rem 0.4rem;
+  cursor: pointer;
+}
+
+.people-switch label {
+  color: #bbb;
+  padding: 0.5rem 1rem;
+  border-radius: 1.5rem;
+  font-weight: 600;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+.people-switch label:hover {
+  color: #fff;
+}
+
+/* Pill (indicator) */
+.pill {
+  position: absolute;
+  top: 0.3rem;
+  bottom: 0.3rem;
+  width: 110px; /* กำหนดความกว้างเท่ากับ label */
+  background: #0af;
+  border-radius: 1.5rem;
+  transition: transform 0.3s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Radio input ซ่อน */
+.tab-input {
+  display: none;
+}
+
+/* เลื่อน pill ตามเลือก radio */
+#p1:checked ~ header .people-switch .pill {
+  transform: translateX(0);
+}
+#p2:checked ~ header .people-switch .pill {
+  transform: translateX(110px);
+}
+
+/* เปลี่ยนสี label ที่เลือก */
+#p1:checked ~ header .people-switch label[for="p1"] {
+  color: #fff;
+  z-index: 1;
+}
+#p2:checked ~ header .people-switch label[for="p2"] {
+  color: #fff;
+  z-index: 1;
+}
+
+/* แสดงแผงโปรไฟล์ตามเลือก */
+.panel {
+  display: none;
+  margin-top: 2rem;
+}
+
+#p1:checked ~ main #panel-p1,
+#p2:checked ~ main #panel-p2 {
+  display: block;
+}
+
+/* hero section */
+.hero {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.hero-left {
+  flex: 1 1 300px;
+}
+
+.hero-right {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+.title {
+  font-size: 2rem;
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+.accent {
+  color: #0af;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-weight: 600;
+  color: #666;
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+}
+
+.bio {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #444;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: none;
+  text-align: center;
+}
+
+.btn.primary {
+  background-color: #0af;
+  color: #fff;
+}
+
+.btn.primary:hover,
+.btn.primary:focus {
+  background-color: #0588d8;
+  outline: none;
+}
+
+.btn.ghost {
+  background-color: transparent;
+  border: 2px solid #0af;
+  color: #0af;
+}
+
+.btn.ghost:hover,
+.btn.ghost:focus {
+  background-color: #0af;
+  color: #fff;
+  outline: none;
+}
+
+/* Small buttons */
+.btn.small {
+  font-size: 0.85rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.35rem;
+  margin-right: 0.4rem;
+}
+
+/* Avatar */
+.avatar {
+  margin: 0 auto;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Cards */
+.cards {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.cards.trio > .card {
+  flex: 1 1 28%;
+  background: #f9f9f9;
+  padding: 1rem 1.25rem;
+  border-radius: 0.6rem;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.1);
+}
+
+.cards.duo > .card {
+  flex: 1 1 45%;
+  background: #f9f9f9;
+  padding: 1rem 1.25rem;
+  border-radius: 0.6rem;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+  color: #111;
+}
+
+/* skill list */
+.skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-list li {
+  margin-bottom: 0.7rem;
+}
+
+.skill-list span {
+  display: inline-block;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Progress bar */
+progress {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #ddd;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #ddd;
+  border-radius: 4px;
+}
+
+progress::-webkit-progress-value {
+  background-color: #0af;
+  border-radius: 4px;
+}
+
+progress::-moz-progress-bar {
+  background-color: #0af;
+  border-radius: 4px;
+}
+
+/* Tick list */
+.tick {
+  list-style: none;
+  padding-left: 1.2em;
+  margin: 0;
+  color: #444;
+}
+
+.tick li {
+  position: relative;
+  margin-bottom: 0.7rem;
+  padding-left: 1.5em;
+  font-weight: 600;
+}
+
+.tick li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #0af;
+  font-weight: 700;
+}
+
+/* Chips */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.chip {
+  background: #e0f0ff;
+  color: #0077cc;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.8rem;
+  border-radius: 1rem;
+  user-select: none;
+}
+
+/* Projects grid */
+.projects .grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.project {
+  background: #fafafa;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.thumb {
+  background: #ddd;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
+
+.project-body {
+  padding: 0.8rem 1rem 1rem;
+  flex: 
